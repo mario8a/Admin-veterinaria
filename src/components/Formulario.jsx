@@ -1,5 +1,6 @@
 import React, {Fragment, useState} from 'react';
-import uuid from 'uuid/v4';
+import PropTypes from 'prop-types';
+import { v4 as uuidv4 } from 'uuid';
 
 
 const Formulario = ({crearCita}) => {
@@ -47,7 +48,7 @@ const Formulario = ({crearCita}) => {
         actualizarError(false);
 
         // Asignar un id
-        cita.id = uuid();
+        cita.id = uuidv4();
         //crear la cita /// trayendo la funcion desde los props // viene del componente principal
         crearCita(cita);
 
@@ -133,4 +134,9 @@ const Formulario = ({crearCita}) => {
      );
 }
  
+//documentando con protorypes
+Formulario.propTypes = {
+    crearCita: PropTypes.func.isRequired,
+}
+
 export default Formulario;
